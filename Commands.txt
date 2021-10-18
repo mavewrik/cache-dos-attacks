@@ -1,0 +1,43 @@
+
+./gem5.opt config/example/se.py -c "<path to astar>;<path to bzip>" -o "<astar options>;<bzip options>" --num-cpus 2
+
+build/X86/gem5.opt configs/New_Code/Project_base.py -c configs/SPEC_int_2006/429.mcf/src/benchmark -o configs/SPEC_int_2006/429.mcf/data/inp.in -I 100000000
+
+
+Commands to Compile Benchmarks :
+
+Bzip2:
+gcc -lm -DSPEC_CPU -DNDEBUG -static spec.c blocksort.c bzip2.c bzlib.c compress.c crctable.c decompress.c huffman.c randtable.c -O0 -o benchmark
+
+MCF:
+gcc -lm -DSPEC_CPU -DNDEBUG -DWANT_STDC_PROTO -static mcf.c mcfutil.c readmin.c implicit.c pstart.c output.c treeup.c pbla.c pflowup.c psimplex.c pbeampp.c -O0 -o benchmark
+
+Sjeng:
+gcc -lm -DSPEC_CPU -DNDEBUG -static attacks.c book.c crazy.c draw.c ecache.c epd.c eval.c leval.c moves.c neval.c partner.c proof.c rcfile.c search.c see.c seval.c sjeng.c ttable.c utils.c -O0 -o benchmark
+
+
+g++ -o bin_file binary_source_file.cpp
+
+build/X86/gem5.opt configs/code_module_1/Project_base.py -c configs/SPEC_int_2006/429.mcf/src/benchmark -o configs/SPEC_int_2006/429.mcf/data/inp.in -I 50000000
+
+build/X86/gem5.opt configs/code_module_1/Project_single_write_attack.py -c configs/SPEC_int_2006/429.mcf/src/benchmark -o configs/SPEC_int_2006/429.mcf/data/inp.in -I 50000000
+
+build/X86/gem5.opt configs/code_module_1/Project_double_write_attack.py -c configs/SPEC_int_2006/429.mcf/src/benchmark -o configs/SPEC_int_2006/429.mcf/data/inp.in -I 50000000
+
+build/X86/gem5.opt configs/code_module_1/Project_triple_write_attack.py -c configs/SPEC_int_2006/429.mcf/src/benchmark -o configs/SPEC_int_2006/429.mcf/data/inp.in -I 50000000
+
+
+Naming convention
+Total - 16 stat files
+code module 1
+stat_0 to stat_3 
+code module 2
+suffix of stat_ -> 4-7
+code module 3
+suffix of stat_ -> 8-11
+code module 4
+suffix of stat_ -> 12-15
+
+Number of instructions in:
+
+Final codes: 500000000 <------> 500 Million instructions
